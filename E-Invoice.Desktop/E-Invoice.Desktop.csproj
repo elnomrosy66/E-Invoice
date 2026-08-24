@@ -1,482 +1,52 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2AECFBDD-0E9E-4991-98A3-A84B50CFB37A}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>E_Invoice.Desktop</RootNamespace>
     <AssemblyName>E-Invoice.Desktop</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
-    <PublishUrl>C:\Users\j-stock\Desktop\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishWizardCompleted>true</PublishWizardCompleted>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>True</UseWindowsForms>
+    <TargetFramework>net48</TargetFramework>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>5B6BB542A841A68161CFE70EEEA42EAD435B62B0</ManifestCertificateThumbprint>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>E-Invoice.Desktop_TemporaryKey.pfx</ManifestKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>false</SignManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>e_invoice_WJM_icon.ico</ApplicationIcon>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <RootNamespace />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AdvancedDataGridView, Version=0.1.0.10, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ADGV.0.1.0.10\lib\net40\AdvancedDataGridView.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="IronXL, Version=2022.3.0.0, Culture=neutral, PublicKeyToken=0f5804b6690bad1e, processorArchitecture=MSIL">
-      <HintPath>..\packages\IronXL.Excel.2022.3.0\lib\net45\IronXL.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp, Version=106.12.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.106.12.0\lib\net452\RestSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Collections.Immutable, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.5.0.0\lib\net461\System.Collections.Immutable.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
+    <None Remove="E-Invoice.Desktop.exe.licenses" />
+    <EmbeddedResource Include="E-Invoice.Desktop.exe.licenses" LogicalName="E-Invoice.Desktop.exe.licenses" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System.Core" />
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    <ProjectReference Include="..\E-Invoice.Domain\E-Invoice.Domain.csproj" />
+    <ProjectReference Include="..\E-Invoice.DAL\E-Invoice.DAL.csproj" />
+    <Reference Include="DevComponents.DotNetBar2">
+      <HintPath>..\Lib\DevComponents.DotNetBar2.dll</HintPath>
     </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reflection.Metadata, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Reflection.Metadata.5.0.0\lib\net461\System.Reflection.Metadata.dll</HintPath>
+    <Reference Include="RestSharp">
+      <HintPath>..\Lib\RestSharp.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Encoding.CodePages, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encoding.CodePages.6.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
+    <Reference Include="MetroFramework">
+      <HintPath>..\Lib\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="IronXL">
+      <HintPath>..\Lib\IronXL.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\Lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\Lib\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Controls\btnEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\CheckBoxEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\ComboBoxEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\DateTimePickerEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\GroupBoxEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\LabelEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\PanelEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controls\TextBoxEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Forms\A.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\A.Designer.cs">
-      <DependentUpon>A.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\DonloadInvoices.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\DonloadInvoices.Designer.cs">
-      <DependentUpon>DonloadInvoices.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmAccounts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmAccounts.Designer.cs">
-      <DependentUpon>frmAccounts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmBranchesAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmBranchesAdd.Designer.cs">
-      <DependentUpon>frmBranchesAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmCancleInvoice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmCancleInvoice.Designer.cs">
-      <DependentUpon>frmCancleInvoice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmCategories.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmCategories.Designer.cs">
-      <DependentUpon>frmCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmCompanies.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmCompanies.Designer.cs">
-      <DependentUpon>frmCompanies.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmInvoice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmInvoice.Designer.cs">
-      <DependentUpon>frmInvoice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmInvoices.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmInvoices.Designer.cs">
-      <DependentUpon>frmInvoices.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmProductsAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmProductsAdd.Designer.cs">
-      <DependentUpon>frmProductsAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmProductSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmProductSearch.Designer.cs">
-      <DependentUpon>frmProductSearch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmSetting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmSetting.Designer.cs">
-      <DependentUpon>frmSetting.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmStoresAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmStoresAdd.Designer.cs">
-      <DependentUpon>frmStoresAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\frmUnitsAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmUnitsAdd.Designer.cs">
-      <DependentUpon>frmUnitsAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Master.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Master.Designer.cs">
-      <DependentUpon>Master.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Upload.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Upload.Designer.cs">
-      <DependentUpon>Upload.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Helpers\HelperForm.cs" />
-    <Compile Include="Helpers\Mess.cs" />
-    <Compile Include="Helpers\SearchIEnum.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\A.resx">
-      <DependentUpon>A.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DonloadInvoices.resx">
-      <DependentUpon>DonloadInvoices.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmAccounts.resx">
-      <DependentUpon>frmAccounts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmBranchesAdd.resx">
-      <DependentUpon>frmBranchesAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCancleInvoice.resx">
-      <DependentUpon>frmCancleInvoice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCategories.resx">
-      <DependentUpon>frmCategories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCompanies.resx">
-      <DependentUpon>frmCompanies.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmInvoice.resx">
-      <DependentUpon>frmInvoice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmInvoices.resx">
-      <DependentUpon>frmInvoices.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmProductsAdd.resx">
-      <DependentUpon>frmProductsAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmProductSearch.resx">
-      <DependentUpon>frmProductSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmSetting.resx">
-      <DependentUpon>frmSetting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmStoresAdd.resx">
-      <DependentUpon>frmStoresAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmUnitsAdd.resx">
-      <DependentUpon>frmUnitsAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Master.resx">
-      <DependentUpon>Master.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Upload.resx">
-      <DependentUpon>Upload.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <None Include="E-Invoice.Desktop_TemporaryKey.pfx" />
-    <None Include="packages.config" />
-    <None Include="Properties\DataSources\E_Invoice.Domain.Models.OrdersVM.datasource" />
-    <None Include="Properties\DataSources\E_Invoice.Domain.Models.ProducrVM.datasource" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\E-Invoice.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\E-Invoice.DAL\E-Invoice.DAL.csproj">
-      <Project>{7614baa2-49ee-41c2-9cc8-203bcd1cb854}</Project>
-      <Name>E-Invoice.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\E-Invoice.Domain\E-Invoice.Domain.csproj">
-      <Project>{8adfb88d-a732-4834-82f0-0840d94e33ce}</Project>
-      <Name>E-Invoice.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Add_1_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Add_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Button_Add_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\httpzcoolcomcnpicpng3006greenpng_048png.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hide_right_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Navigate_right_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Remove_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Save_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Toolbar_folder_add_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Windows_Close_Program_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Navigate_left_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Hide_left_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-used-product-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-supplier-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-supplier-48.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-supplier-48 %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-stock-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-stock-64 %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-sales-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-sales-64 %282%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-sales-64 %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-man-with-glasses-shopping-cart-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-inventory-67.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-customer-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-customer-64 %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8-branch-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\siddhesh-mangela-Y2Fy0trQ-VM-unsplash.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\siddhesh-mangela-CXXQfm5YeTk-unsplash.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\grillot-edouard-oFpp8jss3gE-unsplash.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Send_Icon_72.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="e_invoice_WJM_icon.ico" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
-  </Target>
-  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>
+
+
+
