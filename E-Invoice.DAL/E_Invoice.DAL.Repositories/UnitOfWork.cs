@@ -36,6 +36,8 @@ public class UnitOfWork : IUnitOfWork, IDisposable
 
 	public ICmd<setting> Settings { get; private set; }
 
+	public ICmd<PosDevice> PosDevices { get; private set; }
+
 	public UnitOfWork()
 	{
 		_context = new ApplicationDBContext();
@@ -52,6 +54,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
 		Companies = new Cmd<Company>(_context);
 		Users = new Cmd<User>(_context);
 		Settings = new Cmd<setting>(_context);
+		PosDevices = new Cmd<PosDevice>(_context);
 	}
 
 	public ICmd<T> GetData<T>() where T : class

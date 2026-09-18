@@ -37,6 +37,8 @@ public class ApplicationDBContext : DbContext
 
 	public DbSet<setting> settings { get; set; }
 
+	public DbSet<PosDevice> PosDevices { get; set; }
+
 	public ApplicationDBContext()
 		: base("name=LocafflDb")
 	{

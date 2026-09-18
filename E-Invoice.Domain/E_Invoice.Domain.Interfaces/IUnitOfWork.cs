@@ -32,6 +32,8 @@ public interface IUnitOfWork : IDisposable
 
 	ICmd<setting> Settings { get; }
 
+	ICmd<PosDevice> PosDevices { get; }
+
 	ICmd<T> GetData<T>() where T : class;
 
 	int complete();

@@ -58,6 +58,8 @@ public class frmMain : A
 
 	private ToolStripMenuItem الافرعToolStripMenuItem;
 
+	private ToolStripMenuItem نقاطالبيعToolStripMenuItem;
+
 	private ToolStripDropDownButton toolStripDropDownButton5;
 
 	private ToolStripMenuItem قائمةالعملاءToolStripMenuItem;
@@ -132,6 +134,12 @@ public class frmMain : A
 	{
 		frmBranchesAdd frmBranchesAdd2 = new frmBranchesAdd();
 		frmBranchesAdd2.ShowDialog();
+	}
+
+	private void نقاطالبيعToolStripMenuItem_Click(object sender, EventArgs e)
+	{
+		frmPosDevices frm = new frmPosDevices();
+		frm.ShowDialog();
 	}
 
 	private void فاتورةبيعToolStripMenuItem_Click(object sender, EventArgs e)
@@ -278,6 +286,7 @@ public class frmMain : A
 		this.الاصنافToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 		this.الوحداتToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
 		this.الافرعToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		this.نقاطالبيعToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 		this.رفعالاصنافاكسلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 		this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
 		this.فاتورةبيعToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -314,7 +323,7 @@ public class frmMain : A
 		this.toolStrip1.Text = "toolStrip1";
 		this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(toolStrip1_ItemClicked);
 		this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-		this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[8] { this.gfrgToolStripMenuItem, this.الاعداداتToolStripMenuItem, this.تعريفالمخازنToolStripMenuItem, this.مجموعاتالاصنافToolStripMenuItem1, this.الاصنافToolStripMenuItem, this.الوحداتToolStripMenuItem1, this.الافرعToolStripMenuItem, this.رفعالاصنافاكسلToolStripMenuItem });
+		this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[9] { this.gfrgToolStripMenuItem, this.الاعداداتToolStripMenuItem, this.تعريفالمخازنToolStripMenuItem, this.مجموعاتالاصنافToolStripMenuItem1, this.الاصنافToolStripMenuItem, this.الوحداتToolStripMenuItem1, this.الافرعToolStripMenuItem, this.نقاطالبيعToolStripMenuItem, this.رفعالاصنافاكسلToolStripMenuItem });
 		this.toolStripDropDownButton1.ForeColor = System.Drawing.Color.Snow;
 		this.toolStripDropDownButton1.Image = (System.Drawing.Image)resources.GetObject("toolStripDropDownButton1.Image");
 		this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -352,6 +361,10 @@ public class frmMain : A
 		this.الافرعToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
 		this.الافرعToolStripMenuItem.Text = "الافرع";
 		this.الافرعToolStripMenuItem.Click += new System.EventHandler(الافرعToolStripMenuItem_Click);
+		this.نقاطالبيعToolStripMenuItem.Name = "نقاطالبيعToolStripMenuItem";
+		this.نقاطالبيعToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+		this.نقاطالبيعToolStripMenuItem.Text = "نقاط البيع (POS)";
+		this.نقاطالبيعToolStripMenuItem.Click += new System.EventHandler(نقاطالبيعToolStripMenuItem_Click);
 		this.رفعالاصنافاكسلToolStripMenuItem.Name = "رفعالاصنافاكسلToolStripMenuItem";
 		this.رفعالاصنافاكسلToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
 		this.رفعالاصنافاكسلToolStripMenuItem.Text = "رفع الاصناف اكسل";

@@ -85,6 +85,21 @@ public class Order : Base
 
 	public string CustomerId { get; set; }
 
+	public int? PosDeviceId { get; set; }
+
+	[ForeignKey("PosDeviceId")]
+	public virtual PosDevice PosDevice { get; set; }
+
+	public long? ReceiptNumber { get; set; }
+
+	public string FullReceiptNumber { get; set; }
+
+	public string PaymentMethod { get; set; }
+
+	public string PreviousUUID { get; set; }
+
+	public string ReferenceOldUUID { get; set; }
+
 	private new string Code
 	{
 		get
