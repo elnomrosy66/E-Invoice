@@ -40,6 +40,8 @@ public class frmMain : A
 
 	private ToolStripMenuItem الفواتيرToolStripMenuItem;
 
+	private ToolStripMenuItem ايصالبيعToolStripMenuItem;
+
 	private ToolStripDropDownButton toolStripDropDownButton3;
 
 	private ToolStripMenuItem فاتورةشراءToolStripMenuItem;
@@ -139,6 +141,12 @@ public class frmMain : A
 	private void نقاطالبيعToolStripMenuItem_Click(object sender, EventArgs e)
 	{
 		frmPosDevices frm = new frmPosDevices();
+		frm.ShowDialog();
+	}
+
+	private void ايصالبيعToolStripMenuItem_Click(object sender, EventArgs e)
+	{
+		frmReceipt frm = new frmReceipt();
 		frm.ShowDialog();
 	}
 
@@ -289,6 +297,7 @@ public class frmMain : A
 		this.نقاطالبيعToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 		this.رفعالاصنافاكسلToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 		this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
+		this.ايصالبيعToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 		this.فاتورةبيعToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 		this.مرتجعبيعToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 		this.الفواتيرToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -369,7 +378,7 @@ public class frmMain : A
 		this.رفعالاصنافاكسلToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
 		this.رفعالاصنافاكسلToolStripMenuItem.Text = "رفع الاصناف اكسل";
 		this.رفعالاصنافاكسلToolStripMenuItem.Click += new System.EventHandler(رفعالاصنافاكسلToolStripMenuItem_Click);
-		this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[3] { this.فاتورةبيعToolStripMenuItem, this.مرتجعبيعToolStripMenuItem, this.الفواتيرToolStripMenuItem });
+		this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[4] { this.ايصالبيعToolStripMenuItem, this.فاتورةبيعToolStripMenuItem, this.مرتجعبيعToolStripMenuItem, this.الفواتيرToolStripMenuItem });
 		this.toolStripDropDownButton2.ForeColor = System.Drawing.Color.Snow;
 		this.toolStripDropDownButton2.Image = E_Invoice.Desktop.Properties.Resources.icons8_sales_64__2_;
 		this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -377,6 +386,10 @@ public class frmMain : A
 		this.toolStripDropDownButton2.Size = new System.Drawing.Size(103, 83);
 		this.toolStripDropDownButton2.Text = "المبيعات";
 		this.toolStripDropDownButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+		this.ايصالبيعToolStripMenuItem.Name = "ايصالبيعToolStripMenuItem";
+		this.ايصالبيعToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+		this.ايصالبيعToolStripMenuItem.Text = "إيصال بيع إلكتروني (POS)";
+		this.ايصالبيعToolStripMenuItem.Click += new System.EventHandler(ايصالبيعToolStripMenuItem_Click);
 		this.فاتورةبيعToolStripMenuItem.Name = "فاتورةبيعToolStripMenuItem";
 		this.فاتورةبيعToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
 		this.فاتورةبيعToolStripMenuItem.Text = "فاتورة بيع";
