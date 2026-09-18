@@ -40,11 +40,11 @@ public class A : Form
 	{
 		base.SuspendLayout();
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-		this.BackColor = System.Drawing.Color.White;
+		this.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
 		this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
 		base.ClientSize = new System.Drawing.Size(772, 475);
 		this.DoubleBuffered = true;
-		this.Font = new System.Drawing.Font("Tahoma", 10.8f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+		this.Font = new System.Drawing.Font("Segoe UI", 9.75f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
 		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 		base.Margin = new System.Windows.Forms.Padding(4);
 		base.Name = "A";

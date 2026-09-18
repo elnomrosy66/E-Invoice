@@ -103,6 +103,11 @@ public class frmMain : A
 		Info.CurrenBranch = _unitOfWork.Branchs.GetAll().FirstOrDefault();
 		Info._setting = _unitOfWork.Settings.GetAll().ToList().FirstOrDefault();
 		Info._Company = _unitOfWork.Companies.GetAll().ToList().FirstOrDefault();
+
+		string compName = Info._Company != null ? Info._Company.Name : "الشركة العامة";
+		string branchName = Info.CurrenBranch != null ? Info.CurrenBranch.Name : "الفرع الرئيسي";
+		this.Text = $"منظومة الفاتورة والإيصال الإلكتروني (ETA ERP) - {compName} | {branchName}";
+		this.toolStripLabel1.Text = $"  🟢 متصل بالمنظومة وقاعدة البيانات  |  الشركة: {compName}  |  الفرع: {branchName}  |  التاريخ: {DateTime.Now:yyyy-MM-dd}  ";
 	}
 
 	private void الأصنافToolStripMenuItem_Click(object sender, EventArgs e)
@@ -330,8 +335,8 @@ public class frmMain : A
 		this.toolStrip2.SuspendLayout();
 		base.SuspendLayout();
 		this.toolStrip1.AutoSize = false;
-		this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(121, 134, 203);
-		this.toolStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25f, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+		this.toolStrip1.BackColor = System.Drawing.Color.FromArgb(30, 41, 59);
+		this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 11.25f, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
 		this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
 		this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[6] { this.toolStripDropDownButton1, this.toolStripDropDownButton2, this.toolStripDropDownButton3, this.toolStripDropDownButton4, this.toolStripDropDownButton5, this.toolStripDropDownButton6 });
 		this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -491,15 +496,19 @@ public class frmMain : A
 		this.قائمةالموردينToolStripMenuItem.Text = "قائمة الموردين";
 		this.قائمةالموردينToolStripMenuItem.Click += new System.EventHandler(قائمةالموردينToolStripMenuItem_Click);
 		this.toolStrip2.Dock = System.Windows.Forms.DockStyle.Bottom;
+		this.toolStrip2.BackColor = System.Drawing.Color.FromArgb(15, 23, 42);
+		this.toolStrip2.ForeColor = System.Drawing.Color.White;
 		this.toolStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
 		this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[1] { this.toolStripLabel1 });
-		this.toolStrip2.Location = new System.Drawing.Point(0, 584);
+		this.toolStrip2.Location = new System.Drawing.Point(0, 580);
 		this.toolStrip2.Name = "toolStrip2";
-		this.toolStrip2.Size = new System.Drawing.Size(1228, 25);
+		this.toolStrip2.Size = new System.Drawing.Size(1228, 29);
 		this.toolStrip2.TabIndex = 1;
 		this.toolStrip2.Text = "toolStrip2";
+		this.toolStripLabel1.ForeColor = System.Drawing.Color.White;
+		this.toolStripLabel1.Font = new System.Drawing.Font("Segoe UI", 9.5f, System.Drawing.FontStyle.Bold);
 		this.toolStripLabel1.Name = "toolStripLabel1";
-		this.toolStripLabel1.Size = new System.Drawing.Size(10, 22);
+		this.toolStripLabel1.Size = new System.Drawing.Size(10, 26);
 		this.toolStripLabel1.Text = " ";
 		base.AutoScaleDimensions = new System.Drawing.SizeF(8f, 17f);
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

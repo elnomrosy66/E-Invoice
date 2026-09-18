@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using E_Invoice.DAL.Repositories;
 using E_Invoice.Desktop.Controls;
+using E_Invoice.Desktop.Helpers;
 using E_Invoice.Domian.Models;
 
 namespace E_Invoice.Desktop.Forms;
@@ -14,6 +15,10 @@ public class frmReceiptSearch : Form
 {
 	private IContainer components = null;
 	private UnitOfWork _unitOfWork;
+
+	private Panel pnlHeader;
+	private Label lbHeaderTitle;
+	private Label lbSubtitle;
 
 	private GroupBox grpSearch;
 	private TextBoxEx txtSearchKeyword;
@@ -35,9 +40,36 @@ public class frmReceiptSearch : Form
 	{
 		InitializeComponent();
 		_unitOfWork = new UnitOfWork();
+		UITheme.ApplyTheme(this);
+		UITheme.ApplyGridTheme(dgvReceipts);
+		ApplyStyles();
 		dtFrom.Value = DateTime.Today.AddDays(-30);
 		dtTo.Value = DateTime.Today.AddDays(1);
 		LoadReceipts();
+	}
+
+	private void ApplyStyles()
+	{
+		UITheme.ApplySuccessButton(btnSelect);
+		UITheme.ApplyDangerButton(btnCancel);
+		UITheme.ApplyPrimaryButton(btnSearch);
+		UITheme.ApplyNeutralButton(btnReset);
+
+		if (dgvReceipts.Columns.Count >= 9)
+		{
+			dgvReceipts.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dgvReceipts.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dgvReceipts.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dgvReceipts.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dgvReceipts.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgvReceipts.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgvReceipts.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dgvReceipts.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+			dgvReceipts.Columns[1].DefaultCellStyle.Font = UITheme.BoldFont;
+			dgvReceipts.Columns[6].DefaultCellStyle.Font = UITheme.BoldFont;
+			dgvReceipts.Columns[6].DefaultCellStyle.ForeColor = Color.FromArgb(5, 150, 105);
+		}
 	}
 
 	private void LoadReceipts()
@@ -69,7 +101,7 @@ public class frmReceiptSearch : Form
 			{
 				string posName = r.PosDevice != null ? r.PosDevice.PosName : ("نقطة " + r.PosDeviceId);
 				string typeName = r.OrderType == OrderType.SaleReturn ? "مرتجع" : "بيع";
-				string statusText = r.sent == OrderEinvSend.Sent ? "مرسل للضرائب" : "محلي (غير مرسل)";
+				string statusText = r.sent == OrderEinvSend.Sent ? "🟢 مرسل للضرائب" : "⚪ محلي (غير مرسل)";
 
 				int rowIndex = dgvReceipts.Rows.Add(
 					r.Id,
@@ -176,6 +208,10 @@ public class frmReceiptSearch : Form
 
 	private void InitializeComponent()
 	{
+		this.pnlHeader = new System.Windows.Forms.Panel();
+		this.lbSubtitle = new System.Windows.Forms.Label();
+		this.lbHeaderTitle = new System.Windows.Forms.Label();
+
 		this.grpSearch = new System.Windows.Forms.GroupBox();
 		this.lbSearchKeyword = new E_Invoice.Desktop.Controls.LabelEx();
 		this.txtSearchKeyword = new E_Invoice.Desktop.Controls.TextBoxEx();
@@ -190,11 +226,41 @@ public class frmReceiptSearch : Form
 		this.btnSelect = new System.Windows.Forms.Button();
 		this.btnCancel = new System.Windows.Forms.Button();
 
+		this.pnlHeader.SuspendLayout();
 		this.grpSearch.SuspendLayout();
 		((System.ComponentModel.ISupportInitialize)(this.dgvReceipts)).BeginInit();
 		this.SuspendLayout();
 
+		// pnlHeader
+		this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(30, 41, 59);
+		this.pnlHeader.Controls.Add(this.lbSubtitle);
+		this.pnlHeader.Controls.Add(this.lbHeaderTitle);
+		this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+		this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+		this.pnlHeader.Name = "pnlHeader";
+		this.pnlHeader.Size = new System.Drawing.Size(920, 50);
+		this.pnlHeader.TabIndex = 0;
+
+		// lbHeaderTitle
+		this.lbHeaderTitle.AutoSize = true;
+		this.lbHeaderTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+		this.lbHeaderTitle.ForeColor = System.Drawing.Color.White;
+		this.lbHeaderTitle.Location = new System.Drawing.Point(625, 11);
+		this.lbHeaderTitle.Name = "lbHeaderTitle";
+		this.lbHeaderTitle.Size = new System.Drawing.Size(280, 28);
+		this.lbHeaderTitle.Text = "البحث في إيصالات البيع السابقة";
+
+		// lbSubtitle
+		this.lbSubtitle.AutoSize = true;
+		this.lbSubtitle.Font = new System.Drawing.Font("Segoe UI", 9F);
+		this.lbSubtitle.ForeColor = System.Drawing.Color.FromArgb(203, 213, 225);
+		this.lbSubtitle.Location = new System.Drawing.Point(15, 15);
+		this.lbSubtitle.Name = "lbSubtitle";
+		this.lbSubtitle.Size = new System.Drawing.Size(340, 20);
+		this.lbSubtitle.Text = "انقر نقراً مزدوجاً على أي إيصال لاسترجاعه أو تعديله";
+
 		// grpSearch
+		this.grpSearch.BackColor = System.Drawing.Color.White;
 		this.grpSearch.Controls.Add(this.btnReset);
 		this.grpSearch.Controls.Add(this.btnSearch);
 		this.grpSearch.Controls.Add(this.dtTo);
@@ -203,67 +269,75 @@ public class frmReceiptSearch : Form
 		this.grpSearch.Controls.Add(this.lbFrom);
 		this.grpSearch.Controls.Add(this.txtSearchKeyword);
 		this.grpSearch.Controls.Add(this.lbSearchKeyword);
-		this.grpSearch.Location = new System.Drawing.Point(12, 12);
+		this.grpSearch.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+		this.grpSearch.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
+		this.grpSearch.Location = new System.Drawing.Point(12, 58);
 		this.grpSearch.Name = "grpSearch";
-		this.grpSearch.Size = new System.Drawing.Size(860, 75);
-		this.grpSearch.TabIndex = 0;
+		this.grpSearch.Size = new System.Drawing.Size(896, 75);
+		this.grpSearch.TabIndex = 1;
 		this.grpSearch.TabStop = false;
-		this.grpSearch.Text = "بحث وتصفية الإيصالات";
+		this.grpSearch.Text = "خيارات البحث والتصفية";
 
 		// lbSearchKeyword
 		this.lbSearchKeyword.AutoSize = true;
-		this.lbSearchKeyword.Location = new System.Drawing.Point(780, 32);
+		this.lbSearchKeyword.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+		this.lbSearchKeyword.Location = new System.Drawing.Point(815, 32);
 		this.lbSearchKeyword.Name = "lbSearchKeyword";
-		this.lbSearchKeyword.Size = new System.Drawing.Size(71, 18);
+		this.lbSearchKeyword.Size = new System.Drawing.Size(73, 21);
 		this.lbSearchKeyword.Text = "بحث عام:";
 
 		// txtSearchKeyword
-		this.txtSearchKeyword.Location = new System.Drawing.Point(540, 28);
+		this.txtSearchKeyword.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+		this.txtSearchKeyword.Location = new System.Drawing.Point(565, 28);
 		this.txtSearchKeyword.Name = "txtSearchKeyword";
-		this.txtSearchKeyword.Size = new System.Drawing.Size(235, 26);
+		this.txtSearchKeyword.Size = new System.Drawing.Size(245, 29);
 		this.txtSearchKeyword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchKeyword_KeyDown);
 
 		// lbFrom
 		this.lbFrom.AutoSize = true;
-		this.lbFrom.Location = new System.Drawing.Point(490, 32);
+		this.lbFrom.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+		this.lbFrom.Location = new System.Drawing.Point(520, 32);
 		this.lbFrom.Name = "lbFrom";
-		this.lbFrom.Size = new System.Drawing.Size(34, 18);
+		this.lbFrom.Size = new System.Drawing.Size(35, 21);
 		this.lbFrom.Text = "من:";
 
 		// dtFrom
+		this.dtFrom.Font = new System.Drawing.Font("Segoe UI", 9.5F);
 		this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-		this.dtFrom.Location = new System.Drawing.Point(365, 28);
+		this.dtFrom.Location = new System.Drawing.Point(395, 28);
 		this.dtFrom.Name = "dtFrom";
-		this.dtFrom.Size = new System.Drawing.Size(120, 26);
+		this.dtFrom.Size = new System.Drawing.Size(120, 29);
 
 		// lbTo
 		this.lbTo.AutoSize = true;
-		this.lbTo.Location = new System.Drawing.Point(320, 32);
+		this.lbTo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+		this.lbTo.Location = new System.Drawing.Point(350, 32);
 		this.lbTo.Name = "lbTo";
-		this.lbTo.Size = new System.Drawing.Size(37, 18);
+		this.lbTo.Size = new System.Drawing.Size(39, 21);
 		this.lbTo.Text = "إلى:";
 
 		// dtTo
+		this.dtTo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
 		this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-		this.dtTo.Location = new System.Drawing.Point(195, 28);
+		this.dtTo.Location = new System.Drawing.Point(225, 28);
 		this.dtTo.Name = "dtTo";
-		this.dtTo.Size = new System.Drawing.Size(120, 26);
+		this.dtTo.Size = new System.Drawing.Size(120, 29);
 
 		// btnSearch
-		this.btnSearch.BackColor = System.Drawing.Color.SteelBlue;
-		this.btnSearch.ForeColor = System.Drawing.Color.White;
-		this.btnSearch.Location = new System.Drawing.Point(100, 25);
+		this.btnSearch.Location = new System.Drawing.Point(115, 25);
 		this.btnSearch.Name = "btnSearch";
-		this.btnSearch.Size = new System.Drawing.Size(85, 32);
-		this.btnSearch.Text = "بحث";
+		this.btnSearch.Size = new System.Drawing.Size(95, 34);
+		this.btnSearch.TabIndex = 6;
+		this.btnSearch.Text = "بحث 🔍";
 		this.btnSearch.UseVisualStyleBackColor = false;
 		this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 
 		// btnReset
 		this.btnReset.Location = new System.Drawing.Point(15, 25);
 		this.btnReset.Name = "btnReset";
-		this.btnReset.Size = new System.Drawing.Size(80, 32);
-		this.btnReset.Text = "تحديث";
+		this.btnReset.Size = new System.Drawing.Size(90, 34);
+		this.btnReset.TabIndex = 7;
+		this.btnReset.Text = "إعادة ضبط";
 		this.btnReset.UseVisualStyleBackColor = true;
 		this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
 
@@ -275,57 +349,57 @@ public class frmReceiptSearch : Form
 		this.dgvReceipts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 		this.dgvReceipts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
 			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "ID", Visible = false },
-			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "رقم الإيصال", Width = 110 },
+			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "رقم الإيصال", Width = 115 },
 			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "النوع", Width = 70 },
-			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "التاريخ والوقت", Width = 130 },
-			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "نقطة البيع", Width = 110 },
-			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "العميل", Width = 140 },
-			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "الصافي", Width = 90 },
-			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "الضريبة", Width = 80 },
-			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "حالة الإرسال", Width = 110 },
+			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "التاريخ والوقت", Width = 135 },
+			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "نقطة البيع", Width = 115 },
+			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "اسم العميل", Width = 150 },
+			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "الصافي (ج.م)", Width = 95 },
+			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "الضريبة", Width = 85 },
+			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "حالة الإرسال", Width = 130 },
 			new System.Windows.Forms.DataGridViewTextBoxColumn { HeaderText = "UUID", Visible = false }
 		});
-		this.dgvReceipts.Location = new System.Drawing.Point(12, 95);
+		this.dgvReceipts.Location = new System.Drawing.Point(12, 142);
 		this.dgvReceipts.MultiSelect = false;
 		this.dgvReceipts.Name = "dgvReceipts";
 		this.dgvReceipts.ReadOnly = true;
 		this.dgvReceipts.RowHeadersWidth = 25;
 		this.dgvReceipts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-		this.dgvReceipts.Size = new System.Drawing.Size(860, 320);
-		this.dgvReceipts.TabIndex = 1;
+		this.dgvReceipts.Size = new System.Drawing.Size(896, 325);
+		this.dgvReceipts.TabIndex = 2;
 		this.dgvReceipts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReceipts_CellDoubleClick);
 
 		// btnSelect
-		this.btnSelect.BackColor = System.Drawing.Color.ForestGreen;
-		this.btnSelect.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Bold);
-		this.btnSelect.ForeColor = System.Drawing.Color.White;
-		this.btnSelect.Location = new System.Drawing.Point(460, 425);
+		this.btnSelect.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+		this.btnSelect.Location = new System.Drawing.Point(460, 480);
 		this.btnSelect.Name = "btnSelect";
-		this.btnSelect.Size = new System.Drawing.Size(190, 38);
-		this.btnSelect.Text = "اختيار الإيصال لاسترجاعه";
+		this.btnSelect.Size = new System.Drawing.Size(220, 42);
+		this.btnSelect.TabIndex = 3;
+		this.btnSelect.Text = "اختيار الإيصال واسترجاعه ✔";
 		this.btnSelect.UseVisualStyleBackColor = false;
 		this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
 
 		// btnCancel
-		this.btnCancel.BackColor = System.Drawing.Color.Gray;
-		this.btnCancel.ForeColor = System.Drawing.Color.White;
-		this.btnCancel.Location = new System.Drawing.Point(340, 425);
+		this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+		this.btnCancel.Location = new System.Drawing.Point(325, 480);
 		this.btnCancel.Name = "btnCancel";
-		this.btnCancel.Size = new System.Drawing.Size(100, 38);
-		this.btnCancel.Text = "إلغاء";
+		this.btnCancel.Size = new System.Drawing.Size(120, 42);
+		this.btnCancel.TabIndex = 4;
+		this.btnCancel.Text = "إلغاء [Esc]";
 		this.btnCancel.UseVisualStyleBackColor = false;
 		this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 
 		// frmReceiptSearch
-		this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+		this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
 		this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		this.BackColor = System.Drawing.Color.White;
-		this.ClientSize = new System.Drawing.Size(884, 475);
+		this.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+		this.ClientSize = new System.Drawing.Size(920, 535);
 		this.Controls.Add(this.btnCancel);
 		this.Controls.Add(this.btnSelect);
 		this.Controls.Add(this.dgvReceipts);
 		this.Controls.Add(this.grpSearch);
-		this.Font = new System.Drawing.Font("Tahoma", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+		this.Controls.Add(this.pnlHeader);
+		this.Font = new System.Drawing.Font("Segoe UI", 9.5F);
 		this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 		this.MaximizeBox = false;
 		this.Name = "frmReceiptSearch";
@@ -333,6 +407,8 @@ public class frmReceiptSearch : Form
 		this.RightToLeftLayout = true;
 		this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 		this.Text = "البحث في إيصالات البيع السابقة";
+		this.pnlHeader.ResumeLayout(false);
+		this.pnlHeader.PerformLayout();
 		this.grpSearch.ResumeLayout(false);
 		this.grpSearch.PerformLayout();
 		((System.ComponentModel.ISupportInitialize)(this.dgvReceipts)).EndInit();
