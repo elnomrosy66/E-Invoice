@@ -37,7 +37,7 @@ public class Cmd<T> : ICmd<T> where T : class
 		if (typeof(Base).IsAssignableFrom(typeof(T)))
 		{
 			var param = Expression.Parameter(typeof(T), "x");
-			var prop = Expression.Property(Expression.Convert(param, typeof(Base)), nameof(Base.IsDelete));
+			var prop = Expression.Property(param, nameof(Base.IsDelete));
 			var constVal = Expression.Constant(IsDelete.Active);
 			var body = Expression.Equal(prop, constVal);
 			var lambda = Expression.Lambda<Func<T, bool>>(body, param);
