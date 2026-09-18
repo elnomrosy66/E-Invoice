@@ -39,27 +39,24 @@ public class UnitOfWork : IUnitOfWork, IDisposable
 	public UnitOfWork()
 	{
 		_context = new ApplicationDBContext();
-		Products = new Cmd<Product>();
-		Stores = new Cmd<Store>();
-		Units = new Cmd<Unit>();
-		Categories = new Cmd<Category>();
-		Invintory = new Cmd<Invintory>();
-		OrderDetails = new Cmd<OrderDetail>();
-		Orders = new Cmd<Order>();
-		ProductUnites = new Cmd<ProductUnites>();
-		Categories = new Cmd<Category>();
-		Accounts = new Cmd<Account>();
-		Branchs = new Cmd<Branch>();
-		Companies = new Cmd<Company>();
-		Users = new Cmd<User>();
-		Accounts = new Cmd<Account>();
-		Accounts = new Cmd<Account>();
-		Settings = new Cmd<setting>();
+		Products = new Cmd<Product>(_context);
+		Stores = new Cmd<Store>(_context);
+		Units = new Cmd<Unit>(_context);
+		Categories = new Cmd<Category>(_context);
+		Invintory = new Cmd<Invintory>(_context);
+		OrderDetails = new Cmd<OrderDetail>(_context);
+		Orders = new Cmd<Order>(_context);
+		ProductUnites = new Cmd<ProductUnites>(_context);
+		Accounts = new Cmd<Account>(_context);
+		Branchs = new Cmd<Branch>(_context);
+		Companies = new Cmd<Company>(_context);
+		Users = new Cmd<User>(_context);
+		Settings = new Cmd<setting>(_context);
 	}
 
 	public ICmd<T> GetData<T>() where T : class
 	{
-		return new Cmd<T>();
+		return new Cmd<T>(_context);
 	}
 
 	public int complete()

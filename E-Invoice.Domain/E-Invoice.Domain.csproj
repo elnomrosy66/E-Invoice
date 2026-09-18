@@ -27,6 +27,7 @@
       <HintPath>..\Lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Configuration" />
     <Reference Include="Microsoft.CodeAnalysis">
       <HintPath>..\Lib\Microsoft.CodeAnalysis.dll</HintPath>
     </Reference>

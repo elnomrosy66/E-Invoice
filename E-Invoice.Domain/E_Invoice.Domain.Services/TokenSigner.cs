@@ -19,7 +19,7 @@ namespace E_Invoice.Domain.Services;
 
 public class TokenSigner
 {
-	private static string DllLibPath = "eps2003csp11.dll";
+	private static string DllLibPath = System.Configuration.ConfigurationManager.AppSettings["TokenDllPath"] ?? "eps2003csp11.dll";
 
 	private static string TokenPin = Info._setting.TokenPass;
 

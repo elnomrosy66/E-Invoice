@@ -15,6 +15,12 @@ public class Cmd<T> : ICmd<T> where T : class
 
 	private readonly DbSet<T> dbSet;
 
+	public Cmd(ApplicationDBContext context)
+	{
+		_context = context ?? throw new ArgumentNullException(nameof(context));
+		dbSet = _context.Set<T>();
+	}
+
 	public Cmd()
 	{
 		_context = new ApplicationDBContext();
@@ -28,9 +34,16 @@ public class Cmd<T> : ICmd<T> where T : class
 
 	public IEnumerable<T> GetAll()
 	{
-		return dbSet.AsEnumerable().Cast<Base>().Where(GetActive())
-			.Cast<T>()
-			.ToList();
+		if (typeof(Base).IsAssignableFrom(typeof(T)))
+		{
+			var param = Expression.Parameter(typeof(T), "x");
+			var prop = Expression.Property(Expression.Convert(param, typeof(Base)), nameof(Base.IsDelete));
+			var constVal = Expression.Constant(IsDelete.Active);
+			var body = Expression.Equal(prop, constVal);
+			var lambda = Expression.Lambda<Func<T, bool>>(body, param);
+			return dbSet.Where(lambda).ToList();
+		}
+		return dbSet.ToList();
 	}
 
 	public IEnumerable<T> GetAllBy(Expression<Func<T, bool>> expression, string[] includes = null)
